@@ -12,7 +12,7 @@ var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
 // Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
-var svg = d3.select("#scatter")
+var svg = d3.select(".chart")
   .append("svg")
   .attr("width", svgWidth)
   .attr("height", svgHeight);
@@ -20,10 +20,10 @@ var svg = d3.select("#scatter")
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-d3.select("#scatter").append ("div").attri("class", "tooltip").style("opacity", 0);  
+// d3.select("#scatter").append ("div").attri("class", "tooltip").style("opacity", 0);  
 
 // Import Data
-d3.csv("data.csv").then(function(riskFactor) {
+d3.csv("/data/data.csv").then(function(riskFactor) {
 
     // Step 1: Parse Data/Cast as numbers
     // ==============================
@@ -94,12 +94,13 @@ d3.csv("data.csv").then(function(riskFactor) {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
-      .text("Number of Billboard 100 Hits");
+      .text("Obesity");
 
     chartGroup.append("text")
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
-      .text("Hair Metal Band Hair Length (inches)");
+      .text("Income (Money Brought Home))");
   }).catch(function(error) {
     console.log(error);
-  });
+});
+
